@@ -6,24 +6,23 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-export default function SimpleCard() {
-  const [city, fillcities] = useState([])
+export default function Simplecard() {
+	const [city, fillcities] = useState([]);
 	const classes = style();
 	const bull = <span className={classes.bullet}>•</span>;
-  const getdata = async (city) => {
-		const response = await fetch(
-			`api.openweathermap.org/data/2.5/weather?q=${city}&appid=${REACT_APP_WEATHER}`
-		);
-    return await response.json()
+
+	const getdata = async (url) => {
+		const response = await fetch(url);
+		const data = await response.json();
+		console.log(data.weather);
 	};
-  useEffect(async =>{
-    const response = getdata(`santiago`)
-    const climate = response.map({
-			weather: weather.main,
-			descrition: weather.description,
+	useEffect(async  =>{
+		getdata(
+			"https://api.openweathermap.org/data/2.5/weather?q=Miches&appid=43def69e64b4a6ab0e92f4789d013c31"
+		).then((error) => {
+			console.log(error);
 		});
-		fillcities(climate);
-  });
+	});
 
 	return (
 		<Card className={classes.root}>
@@ -32,13 +31,13 @@ export default function SimpleCard() {
 					className={classes.title}
 					color="textSecondary"
 					gutterBottom>
-					Word of the Day
+					{city.main}
 				</Typography>
 				<Typography variant="h5" component="h2">
 					be{bull}nev{bull}o{bull}lent
 				</Typography>
 				<Typography className={classes.pos} color="textSecondary">
-					adjective
+					{city.description}
 				</Typography>
 				<Typography variant="body2" component="p">
 					well meaning and kindly.

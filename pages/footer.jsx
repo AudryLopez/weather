@@ -1,7 +1,11 @@
-import getdata from "./Api/weather";
-
+import Card from './Card/card'
 function Hello(){
-  return <h1>Next App</h1>
+  return (
+		<div>
+			<h1>Next App</h1>
+      <Card/>
+		</div>
+	);
 }
 
 export default Hello;
