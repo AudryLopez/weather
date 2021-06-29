@@ -18,7 +18,7 @@ export default function Simplecard() {
 	};
 	useEffect(async  =>{
 		getdata(
-			"https://api.openweathermap.org/data/2.5/weather?q=Miches&appid=43def69e64b4a6ab0e92f4789d013c31"
+			"https://api.openweathermap.org/data/2.5/weather?q=&appid=43def69e64b4a6ab0e92f4789d013c31"
 		).then((error) => {
 			console.log(error);
 		});
